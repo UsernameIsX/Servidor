@@ -5,8 +5,9 @@ exports.login = (req, res) => {
     const { usuario, password } = req.body;
 
     // 2. Simulamos la validación contra una base de datos o archivo
-    if (usuario === 'adminaiep' && password === '12345678') {
-        
+    if (usuario === 'adminaiep' && password === '12345678')  {
+        (usuario === 'usuario1' && password === '4321') 
+
         // 3. Generamos el Token de acceso (JWT)
         const token = jwt.sign(
             { usuarioId: 1, rol: 'administrador' }, // La información que viaja dentro del token
@@ -17,7 +18,7 @@ exports.login = (req, res) => {
         // 4. Enviamos el token al cliente en una Cookie
         res.cookie('token', token, {
             httpOnly: true, // CLAVE: Evita que JavaScript del cliente lea la cookie (protege contra XSS)
-            secure: false,  // En producción (HTTPS) esto debe ir en true
+            secure: true,  // En producción (HTTPS) esto debe ir en true
             maxAge: 3600000 // La cookie vivirá por 1 hora (en milisegundos)
         });
 
