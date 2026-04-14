@@ -5,7 +5,7 @@ exports.login = (req, res) => {
     const { usuario, password } = req.body;
 
     // 2. Simulamos la validación contra una base de datos o archivo
-    if (usuario === 'adminaiep' && password === '1234567') {
+    if (usuario === 'adminaiep' && password === '12345678') {
         
         // 3. Generamos el Token de acceso (JWT)
         const token = jwt.sign(
