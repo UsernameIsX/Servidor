@@ -13,6 +13,12 @@ app.get('/api/estado', (req, res) => {
     res.json({ mensaje: 'Servidor en Linea' });
 });
 
+// Rutas de autenticación
+app.use('/api/auth', require('./routes/authRoutes'));
+
+// Rutas del inventario (Protegidas)
+app.use('/api/inventario', require('./routes/stockRoutes'));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
