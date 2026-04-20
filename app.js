@@ -1,5 +1,8 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const https = require('https');
+const fs = require('fs');
+
 require('dotenv').config();
 
 const app = express();
@@ -19,7 +22,12 @@ app.use('/api/auth', require('./routes/authRoutes'));
 // Rutas del inventario (Protegidas)
 app.use('/api/inventario', require('./routes/stockRoutes'));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+const opcionesHttps = {
+    key: fs.readFileSync('private_key.pem'), 
+    cert: fs.readFileSync('certificate.pem')
+};
+
+const PORT = process.env.PORT || 8080;
+https.createServer(options, app).listen(PORT, () => {
+    console.log(`Servidor HTTPS corriendo en https://localhost:${PORT}`);
 });
