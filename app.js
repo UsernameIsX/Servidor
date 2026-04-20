@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+
 const https = require('https');
 const fs = require('fs');
 
@@ -28,6 +29,7 @@ const opcionesHttps = {
 };
 
 const PORT = process.env.PORT || 8080;
-https.createServer(options, app).listen(PORT, () => {
-    console.log(`Servidor HTTPS corriendo en https://localhost:${PORT}`);
+
+https.createServer(opcionesHttps, app).listen(PORT, () => {
+    console.log(`Servidor SEGURO escuchando en https://localhost:${PORT}`);
 });
