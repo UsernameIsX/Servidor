@@ -28,7 +28,7 @@ const opcionesHttps = {
     cert: fs.readFileSync('certificate.pem')
 };
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 443;
 
 https.createServer(opcionesHttps, app).listen(PORT, () => {
     console.log(`Servidor SEGURO escuchando en https://localhost:${PORT}`);
